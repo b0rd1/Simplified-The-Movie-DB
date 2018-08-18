@@ -85,11 +85,11 @@ h1 {
   margin: 15px 10px;
   color: white;
   font-family: 'Roboto', sans-serif;
-  overflow: auto;
   line-height: 20px;
   height: 250px;
   -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
+  overflow: auto;
+  overflow: -moz-scrollbars-hidden;
 }
 
 #risultati div {
