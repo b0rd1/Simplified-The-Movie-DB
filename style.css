@@ -88,6 +88,8 @@ h1 {
   overflow: auto;
   line-height: 20px;
   height: 250px;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 
 #risultati div {
