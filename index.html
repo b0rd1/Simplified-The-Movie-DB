@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Acme|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Boolfix</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="header-left col-md col-lg-9 col-xl-7">
+        <h1>BoolFix</h1>
+        <div class="header-left-menu">
+          <span id="home">Home</span>
+          <span>Aggiunti di recente</span>
+          <span>About Us</span>
+        </div>
+      </div>
+      <div class="col-md-auto"></div>
+      <div class="header-right  col-xl-3">
+        <input class="textarea" type="search" placeholder="Cerca un film o una serie TV">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row tabella-risultati justify-content-center"></div>
+  </div>
+
+  <!-- contenuto nascosto da clonare -->
+  <div id="risultati" class="col-6 col-sm-3">
+    <div id="copertina"></div>
+    <div id="titolo" class="hidden"></div>
+    <div id="titolo_originale" class="hidden"></div>
+    <div id="lingua" class="hidden"></div>
+    <div id="voto" class="hidden"></div>
+    <div id="trama" class="hidden"></div>
+  </div>
+
+</body>
+
+</html>
