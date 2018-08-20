@@ -89,17 +89,25 @@ h1 {
   height: 250px;
   -ms-overflow-style: none;
   overflow: auto;
-  overflow: -moz-scrollbars-hidden;
 }
 
-#risultati div {
+ #risultati div {
   padding-bottom: 5px;
 }
+
+#risultati::-webkit-scrollbar {
+  display: none;
+}
+
 
 .cover {
   background: black;
   border: 1px solid lightgrey;
   height: 250px;
+}
+
+#trama b {
+  font-size: 16px;
 }
 
 i {
@@ -110,56 +118,32 @@ i {
   font-size: 13px;
 }
 
-#titolo {
-  padding-top: 10px;
-}
-
 #copertina img {
   height: 250px;
+}
+
+#serie, #film {
+  padding-top: 10px;
+  text-align: center;
 }
 
 .hidden, #copertina.hidden {
   display: none;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-}
 
- @media screen and (max-width: 576px), (max-width: 768px), (max-width: 1024px){
-	.header-left{
+
+@media screen and (max-width: 576px), (max-width: 768px), (max-width: 1024px) {
+  .header-left {
     text-align: center;
     font-size: 13px;
   }
-  .header-right{
-    text-align: center;
-    padding-top: 5px;
-  }
-  h1{
-    margin: 0;
-  }
-  .fa-user{
-    display: none;
-  }
-  .fa-search{
-    display: none;
-  }
-  .textarea{
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .header-left-menu{
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-/* @media screen and (max-width: 1024px) {
-  .header-left {
-    text-align: center;
-  }
   .header-right {
+    text-align: center;
     padding-top: 5px;
+  }
+  h1 {
+    margin: 0;
   }
   .fa-user {
     display: none;
@@ -168,9 +152,11 @@ i {
     display: none;
   }
   .textarea {
-  width: 100%;
+    width: 100%;
+    margin-bottom: 20px;
   }
   .header-left-menu {
-    display: inline;
+    display: block;
+    margin-bottom: 10px;
   }
-} */
+}
