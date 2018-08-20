@@ -7,7 +7,7 @@ $(document).ready(function() {
 
       var film = $('.textarea').val();
 
-      // gestisce valore vuoto in textarea
+      // errore valore vuoto in textarea
       if ($('.textarea').val() == '') {
         $("#textarea-alert").fadeIn(1000);
         $("#textarea-alert").fadeOut(1500);
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
     var array = data.results;
 
-
+    //errore film inesistente
     if (array.length == 0) {
       $("#risultati-alert").fadeIn(1000);
       $("#risultati-alert").fadeOut(1000);
