@@ -30,7 +30,6 @@ $(document).ready(function() {
     $(this).children('#copertina').hide();
     $(this).addClass('cover');
     $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama').show();
-
   });
 
   $(document).on('mouseleave', '#risultati', function() {
@@ -38,6 +37,7 @@ $(document).ready(function() {
     $(this).removeClass('cover');
     $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama').hide();
   });
+
 
   //funzione cerca film
   function ricercaFilm(data) {
@@ -51,12 +51,14 @@ $(document).ready(function() {
 
       var filmTrovati = data.results[i];
 
+      //copertina
       if (filmTrovati.poster_path == null) {
         $('#copertina').html('<img src="unknown.png">');
       } else {
         $('#copertina').html('<img src="https://image.tmdb.org/t/p/w185/' + filmTrovati.poster_path + '">');
       }
 
+      //titoli
       if (filmTrovati.name == undefined) {
         $('#serie').html('<b>- Film -</b>');
         $('#titolo').html('<b>Titolo: </b>' + filmTrovati.title);
@@ -70,9 +72,6 @@ $(document).ready(function() {
         $('#titolo').html('<b>Titolo: </b>' + filmTrovati.name);
         $('#titolo_originale').html('');
       }
-
-
-
 
       //lingua
       if (filmTrovati.original_language == 'en') {
@@ -106,11 +105,18 @@ $(document).ready(function() {
         $('#voto').html('<b>Voto:</b> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>')
       }
 
+      //trama
       if (filmTrovati.overview == '') {
         $('#trama').html('<b>Trama:</b> Non abbiamo una descrizione per questo titolo.')
       } else {
         $('#trama').html('<b>Trama:</b> ' + filmTrovati.overview)
       }
+
+   console.log(array);
+//
+//       if (data == null) {
+// alert('no film')
+//       }
 
       $('#risultati').show();
     };

@@ -46,6 +46,7 @@ h1 {
 
 .header-right {
   padding-top: 27px;
+  text-align: right;
 }
 
 .fa-user {
@@ -91,14 +92,13 @@ h1 {
   overflow: auto;
 }
 
- #risultati div {
+#risultati div {
   padding-bottom: 5px;
 }
 
 #risultati::-webkit-scrollbar {
   display: none;
 }
-
 
 .cover {
   background: black;
@@ -131,7 +131,26 @@ i {
   display: none;
 }
 
-
+@media screen and (max-width: 1293px) {
+  .header-left {
+    text-align: center;
+    font-size: 15px;
+  }
+  .header-right {
+    text-align: center;
+    padding-top: 5px;
+  }
+  .textarea {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .fa-user {
+    display: none;
+  }
+  .fa-search {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 576px), (max-width: 768px), (max-width: 1024px) {
   .header-left {
