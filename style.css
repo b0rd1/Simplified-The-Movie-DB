@@ -47,6 +47,7 @@ h1 {
 .header-right {
   padding-top: 27px;
   text-align: right;
+  position: relative;
 }
 
 .fa-user {
@@ -71,9 +72,24 @@ h1 {
   text-align: center;
 }
 
-::-webkit-input-placeholder {
+.textarea::-webkit-input-placeholder {
   text-align: center;
   font-style: oblique;
+}
+
+#textarea-alert{
+  color: red;
+  font-size: 18px;
+  position: relative;
+  right: 95px;
+}
+
+#risultati-alert{
+  color: red;
+  font-size: 18px;
+  position: relative;
+  right: 135px;
+
 }
 
 .header-right {

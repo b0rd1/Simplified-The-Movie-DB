@@ -7,6 +7,12 @@ $(document).ready(function() {
 
       var film = $('.textarea').val();
 
+      // gestisce valore vuoto in textarea
+      if ($('.textarea').val() == '') {
+        $("#textarea-alert").fadeIn(1000);
+        $("#textarea-alert").fadeOut(1500);
+      }
+
       $.ajax({
         url: 'https://api.themoviedb.org/3/search/multi?',
         method: 'GET',
@@ -20,7 +26,7 @@ $(document).ready(function() {
           ricercaFilm(data);
         },
         error: function(richiesta, stato, errore) {
-          $('.tabella-risultati').html("C'è stato un errore " + stato + errore)
+          //
         }
       });
     }
@@ -44,6 +50,12 @@ $(document).ready(function() {
     $('.tabella-risultati').html('');
 
     var array = data.results;
+
+
+    if (array.length == 0) {
+      $("#risultati-alert").fadeIn(1000);
+      $("#risultati-alert").fadeOut(1000);
+    }
 
     for (var i = array.length - 1; i >= 0; i--) {
 
@@ -112,11 +124,6 @@ $(document).ready(function() {
         $('#trama').html('<b>Trama:</b> ' + filmTrovati.overview)
       }
 
-   console.log(array);
-//
-//       if (data == null) {
-// alert('no film')
-//       }
 
       $('#risultati').show();
     };
