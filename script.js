@@ -24,6 +24,7 @@ $(document).ready(function() {
         },
         success: function(data) {
           ricercaFilm(data);
+          console.log(data);
         },
         error: function(richiesta, stato, errore) {
           //
@@ -35,13 +36,13 @@ $(document).ready(function() {
   $(document).on('mouseenter', '#risultati', function() {
     $(this).children('#copertina').hide();
     $(this).addClass('cover');
-    $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama').show();
+    $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama, #serie, #film').fadeIn();
   });
 
   $(document).on('mouseleave', '#risultati', function() {
-    $(this).children('#copertina').show();
+    $(this).children('#copertina').fadeIn();
     $(this).removeClass('cover');
-    $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama').hide();
+    $(this).children('#titolo, #titolo_originale, #voto, #lingua, #trama, #serie, #film').hide();
   });
 
 
@@ -105,7 +106,9 @@ $(document).ready(function() {
       }
 
       //voto
-      if (filmTrovati.vote_average <= 2.4) {
+      if (filmTrovati.vote_average == 0) {
+        $('#voto').html('<b>Voto:</b> Media voto inesistente')
+      } else if (filmTrovati.vote_average <= 2.4) {
         $('#voto').html('<b>Voto:</b> <i class="fas fa-star"></i>')
       } else if ((filmTrovati.vote_average >= 2.5) && (filmTrovati.vote_average < 4.3)) {
         $('#voto').html('<b>Voto:</b> <i class="fas fa-star"></i><i class="fas fa-star"></i>')
