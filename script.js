@@ -1,37 +1,43 @@
 $(document).ready(function() {
 
-  //funzione chiamata film
+  //ricerca film invio
   $('.textarea').keyup(function(e) {
-
     if (e.which == 13) {
-
-      var film = $('.textarea').val();
-
-      // errore valore vuoto in textarea
-      if ($('.textarea').val() == '') {
-        $("#textarea-alert").fadeIn(1000);
-        $("#textarea-alert").fadeOut(1500);
-      }
-
-      $.ajax({
-        url: 'https://api.themoviedb.org/3/search/multi?',
-        method: 'GET',
-        data: {
-          api_key: '28be332300429692bfeb9f356bd2b766',
-          language: 'it-IT',
-          query: film,
-          page: 1
-        },
-        success: function(data) {
-          ricercaFilm(data);
-          console.log(data);
-        },
-        error: function(richiesta, stato, errore) {
-          //
-        }
-      });
+      searchContent();
     }
   });
+
+  //ricerca film click
+  $('.fa-search').click(function() {
+    searchContent();
+  });
+
+  function searchContent() {
+    var film = $('.textarea').val();
+
+    // errore valore vuoto in textarea
+    if ($('.textarea').val() == '') {
+      $("#textarea-alert").fadeIn(1000);
+      $("#textarea-alert").fadeOut(1500);
+    }
+
+    $.ajax({
+      url: 'https://api.themoviedb.org/3/search/multi?',
+      method: 'GET',
+      data: {
+        api_key: '28be332300429692bfeb9f356bd2b766',
+        language: 'it-IT',
+        query: film,
+        page: 1
+      },
+      success: function(data) {
+        ricercaFilm(data);
+      },
+      error: function(richiesta, stato, errore) {
+        //
+      }
+    });
+  }
 
   $(document).on('mouseenter', '#risultati', function() {
     $(this).children('#copertina').hide();
@@ -46,11 +52,15 @@ $(document).ready(function() {
   });
 
 
+
+
   //funzione cerca film
   function ricercaFilm(data) {
     $('.tabella-risultati').html('');
 
     var array = data.results;
+
+    console.log(array);
 
     //errore film inesistente
     if (array.length == 0) {
@@ -58,15 +68,15 @@ $(document).ready(function() {
       $("#risultati-alert").fadeOut(1000);
     }
 
-    for (var i = array.length - 1; i >= 0; i--) {
+    for (var i = 0; i < array.length; i++) {
 
-      var risultati = $('#risultati').clone().prependTo('.tabella-risultati');
+      var risultati = $('#risultati').clone().appendTo('.tabella-risultati');
 
       var filmTrovati = data.results[i];
 
       //copertina
       if (filmTrovati.poster_path == null) {
-        $('#copertina').html('<img src="unknown.png">');
+        $('#copertina').html('<img src="img/unknown.png">');
       } else {
         $('#copertina').html('<img src="https://image.tmdb.org/t/p/w185/' + filmTrovati.poster_path + '">');
       }
@@ -88,21 +98,21 @@ $(document).ready(function() {
 
       //lingua
       if (filmTrovati.original_language == 'en') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="en.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/en.png">');
       } else if (filmTrovati.original_language == 'fr') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="fr.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/fr.png">');
       } else if (filmTrovati.original_language == 'de') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="ge.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/ge.png">');
       } else if (filmTrovati.original_language == 'it') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="it.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/it.png">');
       } else if (filmTrovati.original_language == 'ru') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="ru.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/ru.png">');
       } else if (filmTrovati.original_language == 'es') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="sp.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/sp.png">');
       } else if (filmTrovati.original_language == 'ja') {
-        $('#lingua').html('<b>Lingua originale:</b> <img src="jp.png">');
+        $('#lingua').html('<b>Lingua originale:</b> <img src="img/jp.png">');
       } else {
-        $('#lingua').html('<b>Lingua originale:</b> ' + filmTrovati.original_language + ' <img src="no.png"><br>');
+        $('#lingua').html('<b>Lingua originale:</b> ' + filmTrovati.original_language + ' <img src="img/no.png"><br>');
       }
 
       //voto
